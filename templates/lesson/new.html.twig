@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a lesson{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="lesson-form-title">
+        <div class="container">
+            <div class="form-card">
+                <h1 id="lesson-form-title">Create a lesson</h1>
+
+                {{ form_start(lessonForm) }}
+
+                {{ form_row(lessonForm.title) }}
+
+                {{ form_row(lessonForm.topic) }}
+
+                {{ form_row(lessonForm.category) }}
+
+                <button type="submit" class="button">
+                    Save lesson
+                </button>
+
+                {{ form_end(lessonForm) }}
+
+                <a href="{{ path('app_lesson_index') }}" class="button-secondary">
+                    Back to microlearning
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

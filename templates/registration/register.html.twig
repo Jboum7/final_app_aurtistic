@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="register-title">
+        <div class="container">
+            <div class="form-card">
+                <h1 id="register-title">Create your account</h1>
+
+                <p>
+                    Create a calm space to learn and reflect at your own pace.
+                </p>
+
+                {{ form_errors(registrationForm) }}
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.username) }}
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword.first) }}
+                {{ form_row(registrationForm.plainPassword.second) }}
+
+                <button type="submit" class="button">
+                    Create account
+                </button>
+                {{ form_end(registrationForm) }}
+
+                <p>
+                    Already have an account?
+                </p>
+                <a href="{{ path('app_login') }}">Log in</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

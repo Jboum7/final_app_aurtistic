@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aurtistic{% endblock %}
+
+{% block body %}
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="hero__content">
+                <p class="hero__tagline">A soft space for neurodivergent minds</p>
+                <h1 id="hero-title">Understand your brain, at your own pace</h1>
+                <p>
+                    Whether you're seeking answers about yourself, learning to support someone you care about,
+                    or simply exploring different ways of thinking, Aurtistic offers practical resources, personal
+                    reflection tools, and a welcoming environment free from judgment. </p>
+
+                <div class="hero__actions">
+                    <a href="{{ path('app_lesson_index') }}" class="button">
+                        Explore Microlearning
+                    </a>                    {% if app.user %}
+                        <a href="{{ path('app_dashboard') }}" class="button-secondary">
+                            Go to my dashboard
+                        </a>
+                    {% else %}
+                        <a href="{{ path('app_register') }}" class="button-secondary">
+                            Create a free account
+                        </a>
+                    {% endif %}                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features" aria-labelledby="features-title">
+        <div class="container">
+            <h2 id="features-title">Built with your brain in mind</h2>
+
+            <div class="features__grid">
+                <article class="feature-card">
+                    <h3>Accessible</h3>
+                    <p>Clear layouts, readable text and a calm interface.</p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Personal</h3>
+                    <p>A private journal to write and reflect at your own pace.</p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Calm</h3>
+                    <p>No pressure and no overload. Just a soft digital space.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}

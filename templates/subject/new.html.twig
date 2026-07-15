@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add lesson content{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="subject-form-title">
+        <div class="container">
+            <div class="form-card">
+                <h1 id="subject-form-title">Add lesson content</h1>
+
+                <p>
+                    Lesson: {{ lesson.title }}
+                </p>
+
+                {{ form_start(subjectForm) }}
+
+                {{ form_row(subjectForm.title) }}
+
+                {{ form_row(subjectForm.description) }}
+
+                {{ form_row(subjectForm.position) }}
+
+                <button type="submit" class="button">
+                    Save content
+                </button>
+
+                {{ form_end(subjectForm) }}
+
+                <a href="{{ path('app_lesson_show', { id: lesson.id }) }}" class="button-secondary">
+                    Back to the lesson
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

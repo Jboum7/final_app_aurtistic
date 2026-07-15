@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Aurtistic{% endblock %}
+
+{% block body %}
+    <section class="about-page" aria-labelledby="about-title">
+        <div class="container">
+            <p class="hero__tagline">About the project</p>
+
+            <h1 id="about-title">
+                Aurtistic is a calm space for neurodivergent minds
+            </h1>
+
+            <p class="about-intro">
+                Aurtistic was created as a DWWM final project to support people who want to better
+                understand neurodivergence in a calm, accessible and respectful environment.
+            </p>
+
+            <div class="about-grid">
+                <article class="about-card">
+                    <img src="{{ asset('images/friends-idea.jpg') }}" alt="Oumaima with two close friends who inspired the Aurtistic project" class="about-card__image">
+
+                    <h2>Our creative vision</h2>
+
+                    <p>
+                        To all the neurodivergent people, and the ones aware of it, that I met in this life
+                        before I knew who I was: your friendship provided an oasis when I was at my most
+                        miserably adrift.
+                    </p>
+                </article>
+
+                <article class="about-card">
+                    <h2>What it offers</h2>
+
+                    <p>
+                        The application offers short lessons, personal journaling tools and accessibility
+                        settings to make the experience easier to adapt.
+                    </p>
+                </article>
+
+                <article class="about-card">
+                    <h2>Why accessibility matters</h2>
+
+                    <p>
+                        The interface uses calm colors, readable layouts and simple navigation to reduce
+                        visual overload and make the website easier to use.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}

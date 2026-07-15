@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ journal.title }}{% endblock %}
+
+{% block body %}
+    <section class="journal-page" aria-labelledby="journal-title">
+        <div class="container">
+            <p>
+                <a href="{{ path('app_journal') }}" class="button-secondary">
+                    Back to my journal
+                </a>
+            </p>
+
+            <div class="journal-header">
+                <div>
+                    <h1 id="journal-title">{{ journal.title }}</h1>
+
+                    <p>
+                        {{ journal.description }}
+                    </p>
+
+                    <p class="journal-date">
+                        Created on {{ journal.createdAt|date('d/m/Y') }}
+                    </p>
+                </div>
+
+                <a href="{{ path('app_note_new', {journalId: journal.id}) }}" class="button">
+                    Add a note
+                </a>
+            </div>
+
+            <h2>Notes</h2>
+
+            {% if notes is empty %}
+                <p>No notes have been added to this journal yet.</p>
+            {% else %}
+                <div class="journal-list">
+                    {% for note in notes %}                        <article class="journal-card">
+                            <h3>{{ note.title }}</h3>
+
+                            <p>{{ note.comment }}</p>
+
+                            <p class="journal-date">
+                                Created on {{ note.createdAt|date('d/m/Y') }}
+                            </p>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit profile{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="profile-edit-title">
+        <div class="container">
+            <div class="form-card">
+                <h1 id="profile-edit-title">
+                    Edit profile
+                </h1>
+
+                <p>
+                    Update your personal information.
+                </p>
+
+                {{ form_start(profileForm) }}
+
+                {{ form_row(profileForm.username) }}
+
+                {{ form_row(profileForm.email) }}
+
+                <button type="submit" class="button">
+                    Save profile
+                </button>
+
+                {{ form_end(profileForm) }}
+
+                <a href="{{ path('app_profile') }}" class="button-secondary">
+                    Back to profile
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add a note{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="note-form-title">
+        <div class="container">
+            <div class="form-card">
+                <h1 id="note-form-title">Add a note</h1>
+
+                <p>
+                    Journal: {{ journal.title }}
+                </p>
+
+                {{ form_start(noteForm) }}
+
+                {{ form_row(noteForm.title) }}
+
+                {{ form_row(noteForm.comment) }}
+
+                <button type="submit" class="button">
+                    Save note
+                </button>
+
+                {{ form_end(noteForm) }}
+
+                <a href="{{ path('app_journal_show', { id: journal.id }) }}" class="button-secondary">
+                    Back to the journal
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

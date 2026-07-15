@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <section class="profile-page" aria-labelledby="profile-title">
+        <div class="container">
+            <div class="profile-card">
+                <p class="hero__tagline">Personal information</p>
+
+                <h1 id="profile-title">
+                    Profile
+                </h1>
+
+                <div class="profile-header">
+                    <div class="profile-avatar" aria-hidden="true">
+                        {{ app.user.username|slice(0, 1)|upper }}
+                    </div>
+
+                    <div>
+                        <h2>{{ app.user.username }}</h2>
+                        <p>{{ app.user.email }}</p>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Account information</h2>
+
+                    <dl class="profile-list">
+                        <div>
+                            <dt>Username</dt>
+                            <dd>{{ app.user.username }}</dd>
+                        </div>
+
+                        <div>
+                            <dt>Email</dt>
+                            <dd>{{ app.user.email }}</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Neurodivergent profile</h2>
+
+                    {% if app.user.neurodivergentProfile %}
+                        <p>
+                            Your selected profile:
+                        </p>
+
+                        <div class="profile-tags" aria-label="Selected profile">
+                            <span>{{ app.user.neurodivergentProfile }}</span>
+                        </div>
+                    {% else %}
+                        <p>
+                            Your personal profile is not configured yet.
+                            You can choose ADHD, Autism, AuDHD or Self questioning from the edit profile page.
+                        </p>
+
+                        <div class="profile-tags" aria-label="Available profiles">
+                            <span>ADHD</span>
+                            <span>Autism</span>
+                            <span>AuDHD</span>
+                            <span>Self questioning</span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="profile-actions">
+                    <a href="{{ path('app_profile_edit') }}" class="button">
+                        Edit profile
+                    </a>
+
+                    <a href="{{ path('app_settings') }}" class="button-secondary">
+                        More settings and accessibility
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

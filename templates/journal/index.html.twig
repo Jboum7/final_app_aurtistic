@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My journal{% endblock %}
+
+{% block body %}
+    <section class="journal-page" aria-labelledby="journal-title">
+        <div class="container">
+            <div class="journal-header">
+                <h1 id="journal-title">My journal</h1>
+
+                <a href="{{ path('app_journal_new') }}" class="button">
+                    Create a journal
+                </a>
+            </div>
+
+            {% if journals is empty %}
+                <p>You have not created a journal yet.</p>
+            {% else %}
+                <div class="journal-list">
+                    {% for journal in journals %}
+                        <article class="journal-card">
+                            <h2>
+                                <a href="{{ path('app_journal_show', {id: journal.id}) }}">
+                                    {{ journal.title }}
+                                </a>
+                            </h2>
+                            <p>{{ journal.description }}</p>
+
+                            <p class="journal-date">
+                                Created on {{ journal.createdAt|date('d/m/Y') }}
+                            </p>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

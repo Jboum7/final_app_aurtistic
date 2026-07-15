@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Routine tracker{% endblock %}
+
+{% block body %}
+    <section class="coming-soon-page" aria-labelledby="routine-title">
+        <div class="container">
+            <div class="coming-soon-card">
+                <p class="hero__tagline">Coming soon</p>
+
+                <h1 id="routine-title">
+                    Routine tracker
+                </h1>
+
+                <p>
+                    No panic, neurospicy people. This will not be a rigid routine system.
+                    The goal is to create a gentle tracker that adapts to the way you process life,
+                    not a tool that forces you to fit into a perfect schedule.
+                </p>
+
+                <p>
+                    This future space will help you follow small daily actions, notice what supports you,
+                    and build routines that feel realistic, flexible and kind to your brain.
+                </p>
+
+                <a href="{{ path('app_home') }}" class="button-secondary">
+                    Back to home
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

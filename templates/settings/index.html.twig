@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="settings-title">
+        <div class="container">
+            <div class="form-card settings-card">
+                <p class="hero__tagline">Accessibility preferences</p>
+
+                <h1 id="settings-title">
+                    Settings
+                </h1>
+
+                <p>
+                    Choose comfortable reading options. You can preview them before saving.
+                </p>
+
+                {{ form_start(settingForm, {'attr': {'class': 'settings-form'}}) }}
+
+                <div class="settings-group">
+                    {{ form_row(settingForm.fontsize) }}
+                </div>
+
+                <div class="settings-group">
+                    {{ form_row(settingForm.fontweight) }}
+                </div>
+
+                <div class="settings-group">
+                    {{ form_row(settingForm.fontstretch) }}
+                </div>
+
+                <div class="settings-group">
+                    {{ form_row(settingForm.theme) }}
+                </div>
+
+                <button type="submit" class="button">
+                    Save settings
+                </button>
+
+                {{ form_end(settingForm) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aurtistic, a calm and accessible space for neurodivergent minds.">
+    <title>{% block title %}Aurtistic{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/puzzle.png') }}">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body
+    class="{% if app.user and app.user.setting and app.user.setting.theme == 'dark' %}theme-dark{% endif %}"
+    {% if app.user and app.user.setting %}
+        style="
+            font-size: {{ app.user.setting.fontsize }}rem;
+            font-weight: {{ app.user.setting.fontweight }};
+            font-stretch: {{ app.user.setting.fontstretch }}%;
+            "
+    {% endif %}
+>
+<header class="site-header">
+    <div class="container">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="{{ path('app_home') }}" class="navbar__brand" aria-label="Aurtistic home">
+                <img src="{{ asset('images/logo-aurtistic.png') }}" alt="Hands Collaboration" class="navbar__logo">
+                <span>Aurtistic </span>
+            </a>
+
+            <ul class="navbar__links">
+                <li>
+                    <a href="{{ path('app_home') }}">Home</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('app_lesson_index') }}">Microlearning</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('app_journal') }}">Journal</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('app_about') }}">About Us</a>
+                </li>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="{{ path('app_category_new') }}">
+                            New category
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if app.user %}
+                    <li>
+                        <a href="{{ path('app_dashboard') }}">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_settings') }}" class="navbar__icon-link" aria-label="Settings">
+                            <span class="visually-hidden">Settings</span>
+
+                            <svg class="navbar__icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path
+                                    d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.4 1a7.2 7.2 0 0 0-2-1.2L14.2 3h-4.4l-.4 2.7a7.2 7.2 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.5A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.2l-2 1.5 2 3.4 2.4-1a7.2 7.2 0 0 0 2 1.2l.4 2.7h4.4l.4-2.7a7.2 7.2 0 0 0 2-1.2l2.4 1 2-3.4-2-1.5A7 7 0 0 0 19 12z"></path>
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_profile') }}" class="navbar__profile" aria-label="My profile">
+                            {{ app.user.username|slice(0, 1)|upper }}
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_logout') }}">Log out</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('app_login') }}">Log in</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_register') }}">Register</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+    {% for message in app.flashes('success') %}
+        <div class="container">
+            <p class="flash-success" role="status">
+                {{ message }}
+            </p>
+        </div>
+    {% endfor %}
+
+    {% block body %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="container footer__content">
+        <div>
+            <p class="footer__brand">Aurtistic</p>
+
+            <p class="footer__description">
+                A calm and accessible space for neurodivergent minds.
+            </p>
+        </div>
+
+        <nav aria-label="Footer navigation">
+            <ul class="footer__links">
+                <li>
+                    <a href="{{ path('app_routine') }}">Routine</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('app_community') }}">Community</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('app_print_shop') }}">Print shop</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <p class="footer__copyright">
+        © {{ "now"|date("Y") }} Aurtistic. DWWM project.
+    </p>
+</footer>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+</html>

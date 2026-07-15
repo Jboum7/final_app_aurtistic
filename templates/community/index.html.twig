@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Community{% endblock %}
+
+{% block body %}
+    <section class="coming-soon-page" aria-labelledby="community-title">
+        <div class="container">
+            <div class="coming-soon-card">
+                <p class="hero__tagline">Coming soon</p>
+
+                <h1 id="community-title">
+                    Community
+                </h1>
+
+                <p>
+                    This will be a space where you can connect with other people,
+                    share experiences and feel less alone in your neurodivergent journey.
+                </p>
+
+                <p>
+                    You will not have to participate if you do not want to.
+                    You can be a quiet little ghost, read what you need,
+                    take the information that helps you and leave without pressure.
+                </p>
+
+                <p>
+                    And if you are looking for friendship, support or conversation,
+                    you will be welcome too. The goal is to keep this space respectful,
+                    gentle and free from judgment.
+                </p>
+
+                <a href="{{ path('app_home') }}" class="button-secondary">
+                    Back to home
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

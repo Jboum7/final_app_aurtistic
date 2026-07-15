@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <section class="dashboard-page" aria-labelledby="dashboard-title">
+        <div class="container">
+            <p class="hero__tagline">Your personal space</p>
+
+            <h1 id="dashboard-title">
+                Welcome, {{ app.user.username }}
+            </h1>
+
+            <p>
+                Choose what you want to explore today.
+            </p>
+
+            <div class="dashboard-grid">
+                <article class="dashboard-card">
+                    <h2>Microlearning</h2>
+
+                    <p>
+                        Continue learning with short and accessible lessons.
+                    </p>
+
+                    <a href="{{ path('app_lesson_index') }}" class="button">
+                        Go to lessons
+                    </a>
+                </article>
+
+                <article class="dashboard-card">
+                    <h2>Journal</h2>
+
+                    <p>
+                        Write your thoughts and keep your personal notes.
+                    </p>
+
+                    <a href="{{ path('app_journal') }}" class="button-secondary">
+                        Open journal
+                    </a>
+                </article>
+
+                <article class="dashboard-card">
+                    <h2>Settings</h2>
+
+                    <p>
+                        Personalize your experience. This section will be added later.
+                    </p>
+                    <a href="{{ path('app_settings') }}" class="button-secondary">
+                        Open settings
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}

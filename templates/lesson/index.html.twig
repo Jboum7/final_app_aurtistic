@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Microlearning{% endblock %}
+
+{% block body %}
+    <section class="lessons-page" aria-labelledby="lessons-title">
+        <div class="container">
+            <div class="journal-header">
+                <div>
+                    <h1 id="lessons-title">Microlearning</h1>
+                    <p>Explore short lessons at your own pace.</p>
+                </div>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_lesson_new') }}" class="button">
+                        Create a lesson
+                    </a>
+                {% endif %}
+            </div>
+
+            <nav class="lesson-filters" aria-label="Filter lessons by profile">
+                <a
+                    href="{{ path('app_lesson_index') }}"
+                    class="lesson-filter {% if selectedCategory is null %}lesson-filter--active{% endif %}"
+                >
+                    All profiles
+                </a>
+
+                {% for category in categories %}
+                    <a
+                        href="{{ path('app_lesson_by_category', {categoryId: category.id}) }}"
+                        class="lesson-filter {% if selectedCategory and selectedCategory.id == category.id %}lesson-filter--active{% endif %}"
+                    >
+                        {{ category.title }}
+                    </a>
+                {% endfor %}
+            </nav>
+
+            {% if lessons is empty %}
+                <p>No lessons are available yet.</p>
+            {% else %}
+                <div class="lesson-list">
+                    {% for lesson in lessons %}
+                        <article class="lesson-card">
+                            <p class="lesson-category">
+                                {{ lesson.category.title }}
+                            </p>
+
+                            <h2>
+                                <a href="{{ path('app_lesson_show', {id: lesson.id}) }}">
+                                    {{ lesson.title }}
+                                </a>
+                            </h2>
+
+                            <p>{{ lesson.topic }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

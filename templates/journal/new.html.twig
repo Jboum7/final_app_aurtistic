@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a journal{% endblock %}
+
+{% block body %}
+    <section class="form-section" aria-labelledby="journal-form-title">
+        <div class="container">
+            <div class="form-card">
+                <h1 id="journal-form-title">Create a journal</h1>
+
+                {{ form_start(journalForm) }}
+
+                {{ form_row(journalForm.title) }}
+
+                {{ form_row(journalForm.description) }}
+
+                <button type="submit" class="button">
+                    Save journal
+                </button>
+
+                {{ form_end(journalForm) }}
+
+                <a href="{{ path('app_journal') }}" class="button-secondary">
+                    Back to my journal
+                </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
